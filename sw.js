@@ -1,5 +1,5 @@
 // 2-3반 함께 공부하기 — 오프라인에서도 앱 화면이 열리도록 캐시. 기록 데이터(서버 API)는 캐시하지 않는다.
-const VERSION = 'v5';
+const VERSION = 'v6';
 const CORE = `sqc-core-${VERSION}`;
 const RUNTIME = `sqc-runtime-${VERSION}`;
 self.addEventListener('install', (e) => {
