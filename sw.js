@@ -1,5 +1,5 @@
 // 2-3반 함께 공부하기 — 오프라인에서도 앱 화면이 열리도록 캐시. 기록 데이터(서버 API)는 캐시하지 않는다.
-const VERSION = 'v8';
+const VERSION = 'v9';
 const CORE = `sqc-core-${VERSION}`;
 const RUNTIME = `sqc-runtime-${VERSION}`;
 self.addEventListener('install', (e) => {
@@ -22,4 +22,10 @@ self.addEventListener('fetch', (e) => {
       return hit || net;
     })));
   }
+});
+
+// 알림을 누르면 앱 창으로
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((cs) => (cs[0] ? cs[0].focus() : self.clients.openWindow('./'))));
 });
